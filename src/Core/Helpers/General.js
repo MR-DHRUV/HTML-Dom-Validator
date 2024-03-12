@@ -7,10 +7,11 @@ function splitIndentTagAttr(loc) {
     return loc.match(/^(\s*)(\w+)(?:\(([^)]+)\))?/);
 }
 
+// Convert the attributes string to an object
+// basically a tree stored in an array
 export function convertDOMToObjects(dom) {
-    console.log(dom)
+    
     const lines = dom.split('\n').filter(tag => tag.trim() !== '');
-    console.log(lines)
     const objects = [];
     const stack = [];
 

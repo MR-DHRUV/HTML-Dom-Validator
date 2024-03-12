@@ -1,10 +1,11 @@
-/*
+/**
 *@author : Dhruv Gupta
 */
 
 // these attribute require separate processing
 const ignoreTags = ['class', 'text', 'choice', 'queryK', 'matchClassK', 'matchIdK', 'random', 'hrefStartsWith'];
 
+// Convert the attributes string to an object
 export function parseAttributes(attributeString) {
     const attributes = {};
     let match;
@@ -29,6 +30,7 @@ export function parseAttributes(attributeString) {
     return attributes;
 }
 
+// Validate the attributes of a DOM node against the rules attributes and return any errors
 export function validateAttributes(domAttributes, ruleAttributes) {
 
     const errors = [];

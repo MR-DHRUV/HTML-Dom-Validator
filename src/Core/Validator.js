@@ -1,14 +1,22 @@
+/**
+*@author : Dhruv Gupta
+*/
 import { validateAttributes } from "./Helpers/Attributes";
 import { convertDOMToObjects } from "./Helpers/General";
 import { parseDomStructure } from "./Helpers/Parser";   
 
 export default function resolveQueries(htmlString, queries) {
+    
     // parse the dom
     const dom = parseDomStructure(htmlString);
+    
+    // convert the dom to objects
     const domObjects = convertDOMToObjects(dom);
+    
     const errors = [];
-
-    console.log(queries)
+    // console.log(dom)
+    // console.log(domObjects)
+    // console.log(queries)
 
     // creating a general function to resolve the queries
     function resolveQuery(domNode, queryNode, queryObjects, visited) {
