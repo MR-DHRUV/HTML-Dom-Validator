@@ -24,7 +24,7 @@ const Navbar = ({ validate }) => {
     // }
     // useEffect(() => {
     //     func()
-    // }, [])
+    // }, []) 
 
 
     return (
