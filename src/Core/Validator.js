@@ -3,16 +3,16 @@
 */
 import { validateAttributes } from "./Helpers/Attributes";
 import { convertDOMToObjects } from "./Helpers/General";
-import { parseDomStructure } from "./Helpers/Parser";   
+import { parseDomStructure } from "./Helpers/Parser";
 
 export default function resolveQueries(htmlString, queries) {
-    
+
     // parse the dom
     const dom = parseDomStructure(htmlString);
-    
+
     // convert the dom to objects
     const domObjects = convertDOMToObjects(dom);
-    
+
     const errors = [];
     // console.log(dom)
     // console.log(domObjects)
@@ -121,6 +121,8 @@ export default function resolveQueries(htmlString, queries) {
                     }
                     else {
                         errors.push(`Expected tag <${child.tag}> ${child.attributes?.id ? `with id '${child.attributes.id}'` : child.attributes.class?.length > 0 ? `with class '${child.attributes.class}'` : ``} but found <${domChild.tag}> ${domChild.attributes?.id ? `with id '${domChild.attributes.id}'` : domChild.attributes.class?.length > 0 ? `with class '${domChild.attributes.class}'` : ``}`);
+
+                        break;
                     }
                 }
             }
@@ -132,7 +134,13 @@ export default function resolveQueries(htmlString, queries) {
     for (let i = 0; i < queries.length; i++) {
 
         const query = queries[i].split('\n').filter(tag => tag.trim() !== ''); // Split rule by new lines and remove empty lines;
-        if(query.length === 0) continue; // skip empty queries
+        if (query.length === 0) continue; // skip empty queries
+        
+        // check if the query is valid
+        if (query.length != 5) {
+            errors.push(`Invalid query: ${queries[i]}`);
+            continue;
+        }
 
         // simplifying the query by parsing it from convertDOMToObjects method
         const queryObjects = convertDOMToObjects(queries[i]);

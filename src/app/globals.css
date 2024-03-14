@@ -3,7 +3,7 @@
 }
 
 .errorContainer{
-    height: 100px;
+    height: 140px;
     overflow-y: scroll !important;
 }
 
@@ -14,4 +14,7 @@
 
 .main{
     height: 100vh !important;
+}
+.spx{
+    height: 7px;
 }

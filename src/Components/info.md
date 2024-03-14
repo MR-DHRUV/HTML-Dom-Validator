@@ -1,6 +1,3 @@
-# **HTML DOM Validator**
-DOM Validator ensures the structural integrity of HTML documents by validating them against specified rules. Using the **HTML Validation Language**, users can define custom rules to match their requirements. 
-
 ## **HTML Validation Language**
 The HTML Validation Language (HVL) allows you to define rules for validating the DOM structure of HTML documents. It provides a simple syntax to specify elements, attributes, and validation conditions. Below are the rules and syntax for using HVL.
 
@@ -149,47 +146,3 @@ Following are the rules to represent various aspects of the below HTML code.
     ```css
     ul(id="Item_3" matchIdK="3,_")
     ```
-
-
-## Local Setup and Development
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-#### Setting up the project
-1. Please make sure you have Node.js installed on your system.
-2. Clone the repository and navigate to the root directory of the project.
-3. Run the following command to install the required dependencies.
-    ```bash
-    npm install
-    # or
-    yarn install
-    ```
-4. Run the following command to start the development server.
-    ```bash
-    npm run dev
-    # or
-    yarn dev
-    ```
-
-5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-#### Project Structure
-```bash
-├──src
-│   ├──app
-│   │   ├──page.js
-│   ├──components
-│   │   ├──Navbar.js
-│   ├──Core
-│   │   ├──Helpers
-│   │   │   ├──Attribute.js (Attribute helper functions)
-│   │   │   ├──General.js (General helper functions)
-│   │   │   ├──Parser.js (HTML Parser)
-│   │   ├──Validator.js (Rule validation logic)
-```
-
-<br>
-<br>
-
-**We love contributions** <br>Contribute to this project by adding new features, fixing bugs, or improving the documentation. You can also help by reviewing and commenting on existing pull requests.
-
-#### Made with ❤️ by [Dhruv Gupta](https://mrdhruv.co)
