@@ -21,7 +21,7 @@ export function convertDOMToObjects(dom, q=false) {
 
         const [___, indent, tag, attr] = splitIndentTagAttr(line);
         
-        if (q && (indent === undefined || tag === undefined || attr === undefined)) {
+        if (q && (indent === undefined || tag === undefined)) {
             return `Invalid Query`
         }
 
