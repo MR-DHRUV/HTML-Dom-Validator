@@ -73,6 +73,7 @@ export default function resolveQueries(htmlString, queries) {
                 errors.push(`Expected ${queryNode.children.length} children in tag <${tag}> ${domNode.attributes?.id ? `with id '${domNode.attributes.id}'` : domNode.attributes.class?.length > 0 ? `with class '${domNode.attributes.class}'` : ``} but found ${domNode.children.length}`);
             }
             else {
+                const visited = { set: new Set() }; // to pass by reference
                 let matchedChildren = 0;
                 // for each children validate the tag and attributes, so for each children in query we will find them in dom and validate them recursively
                 for (let i = 0; i < queryNode.children.length; i++) {
@@ -90,7 +91,7 @@ export default function resolveQueries(htmlString, queries) {
                             // mark the child as visited
                             matchedChildren++;
                             visited.set.add(j);
-                            resolveQuery(domChild, child, queryObjects);
+                            resolveQuery(domChild, child, queryObjects,visited);
                             break;
                         }
                     }
@@ -122,7 +123,7 @@ export default function resolveQueries(htmlString, queries) {
                             validationErrors.forEach(error => errors.push(`In tag <${domChild.tag}> ${domChild.attributes.id ? `with id '${domChild.attributes.id}'` : domChild.attributes.class?.length > 0 ? `with class '${domChild.attributes.class}'` : ``}: ${error}`));
                         }
                         else {
-                            resolveQuery(domChild, child, queryObjects);
+                            resolveQuery(domChild, child, queryObjects,visited);
                         }
                     }
                     else {
