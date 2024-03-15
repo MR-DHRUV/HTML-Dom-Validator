@@ -6,8 +6,8 @@ const nextConfig = {
         if (!isServer) {
             config.resolve.fallback = {
                 fs: false,
-                ChildProcess: false,
                 child_process: false,
+                canvas:false,
             };
         }
 

@@ -31,7 +31,7 @@ export default function Home() {
             <Navbar validate={validate} />
 
             {/* Editor */}
-            <div className="mt-4 d-flex flex-row w-100 px-5">
+            <div className="mt-2 d-flex flex-row w-100 px-5">
                 <div className="d-flex flex-column w-100 p-2 px-3">
                     <h4>Rules</h4>
                     <div className="querydiv border rounded p-2">
@@ -80,7 +80,7 @@ export default function Home() {
             <div className="bg-white w-100 spx"></div>
 
             {/* Console */}
-            <div className="rounded-3 w-100 p-3">
+            <div className="rounded-3 w-100 px-3">
                 <h4>Console</h4>
                 <ul className="errorContainer mybg">
                     {errors.map((error, index) => (

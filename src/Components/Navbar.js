@@ -1,31 +1,16 @@
 "use client";
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Modal from 'react-bootstrap/Modal';
-import ReactMarkdown from 'react-markdown'
-import remarkGfm from 'remark-gfm'
-import rehypeRaw from 'rehype-raw'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-// import markdown from './info.md'
+import Readme from './readme';
 
 const Navbar = ({ validate }) => {
 
-    const [show, setShow] = useState(false);
-    const [marked, setmarked] = useState('')
+    const [show, setShow] = useState(true);
+    const [marked, setmarked] = useState(``)
 
     // handle modal
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
-    // fetch markdown
-    // const func = () => {
-    //     fetch(markdown).then((response) => response.text()).then((text) => {
-    //         setmarked(text)
-    //     })
-    // }
-    // useEffect(() => {
-    //     func()
-    // }, []) 
-
 
     return (
         <>
@@ -53,30 +38,14 @@ const Navbar = ({ validate }) => {
                     </div>
                 </div>
             </nav>
-            <Modal show={show} onHide={handleClose} centered fullscreen>
+            <Modal show={show} onHide={handleClose} centered dialogClassName='docs'>
                 <Modal.Header closeButton>
                     <Modal.Title>Documentation</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {/*eslint-disable-next-line react/no-children-prop */}
-                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]} children={marked}
-                        components={{
-                            code({ node, inline, className, children, ...props }) {
-                                const match = /language-(\w+)/.exec(className || '')
-                                return !inline && match ? (
-                                    <SyntaxHighlighter
-                                        children={String(children).replace(/\n$/, '')}
-                                        language={match[1]}
-                                        PreTag="div"
-                                        {...props}
-                                    />
-                                ) : (
-                                    <code className={className} {...props}>
-                                        {children}
-                                    </code>
-                                )
-                            }
-                        }} />
+                    <div className="container">
+                        <Readme />
+                    </div>
                 </Modal.Body>
             </Modal>
         </>

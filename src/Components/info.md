@@ -1,6 +1,3 @@
-## **HTML Validation Language**
-The HTML Validation Language (HVL) allows you to define rules for validating the DOM structure of HTML documents. It provides a simple syntax to specify elements, attributes, and validation conditions. Below are the rules and syntax for using HVL.
-
 #### 1. Element Declaration
 
 Specify the element name followed by its attributes in parentheses. If an element has no attributes, use empty parentheses.
@@ -11,7 +8,7 @@ elementName(attribute1="value1" attribute2="value2")
 
 #### 2. Nesting Levels
 
-Use tabs or spaces to denote nesting levels. Each level of indentation represents a child element.
+Use tab to denote nesting levels. Each level of indentation represents a child element. After all children in the Document Object Model (DOM) have been matched with the specified rule, any additional children present in the DOM will be disregarded.
 
 ```css
 div(id="body")
@@ -50,7 +47,7 @@ elementName(text="Probem Of the Day") // Matches the entire string
 
 #### 6. Choice in HTML Tag
 
-To provide a choice between different HTML tags, use `choice="tag1 tag2 ..."`.
+To provide user a choice between different HTML tags, use `choice="tag1 tag2 ..."`.
 
 ```css
 elementName(choice="tag1 tag2 ...")
@@ -58,7 +55,7 @@ elementName(choice="tag1 tag2 ...")
 
 #### 7. Match ID or Class with text of Kth Child
 
-To match the ID or class of an element with the text of the K'th child, use `matchIdK="K,$"` or `matchClassK="K,$"` , where "$" is an operator that will be placed in the place of the blank spaces in the text of K’th child.
+To match the ID or class of an element with the text of the K'th child, use `matchIdK="K,$"` or `matchClassK="K,$"` , where "$" is an operator that will replace the blank spaces in the text of K’th child.
 
 ```css
 elementName(matchIdK="K,$")
@@ -142,7 +139,9 @@ Following are the rules to represent various aspects of the below HTML code.
     ```
 6. **Match ID or Class with text of Kth Child**
     
-    This rule matches an element `<ul>` such that its id is same as the text of the 3rd child and replaces the blank spaces with "_".
+    This rule matches an element `<ul>` with class main_list such that its id is same as the text of the 3rd child and replaces the blank spaces with "_".
     ```css
-    ul(id="Item_3" matchIdK="3,_")
+    ul(matchIdK="3,_" class="main_list")
     ```
+
+#### Made with ❤️ by [Dhruv Gupta](https://mrdhruv.co)
