@@ -6,7 +6,6 @@ import { JSDOM } from 'jsdom';
 // Convert the HTML string to a DOM structure
 export function parseDomStructure(htmlString) {
     
-    /// check its syntax TODO
     const dom = new JSDOM(htmlString);
     const rootNode = dom.window.document.documentElement;
     let output = "";

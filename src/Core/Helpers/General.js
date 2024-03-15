@@ -9,7 +9,7 @@ function splitIndentTagAttr(loc) {
 
 // Convert the attributes string to an object
 // basically a tree stored in an array
-export function convertDOMToObjects(dom) {
+export function convertDOMToObjects(dom, q=false) {
     
     const lines = dom.split('\n').filter(tag => tag.trim() !== '');
     const objects = [];
@@ -20,6 +20,11 @@ export function convertDOMToObjects(dom) {
         if (line.trim() === '') continue;
 
         const [___, indent, tag, attr] = splitIndentTagAttr(line);
+        
+        if (q && (indent === undefined || tag === undefined || attr === undefined)) {
+            return `Invalid Query`
+        }
+
         const attributes = parseAttributes(attr || {});
         const obj = { tag, attributes, children: [] };
 

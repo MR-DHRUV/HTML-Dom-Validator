@@ -129,21 +129,19 @@ export default function resolveQueries(htmlString, queries) {
         }
     }
 
-
     // now I will serve all the queries one by one
     for (let i = 0; i < queries.length; i++) {
 
         const query = queries[i].split('\n').filter(tag => tag.trim() !== ''); // Split rule by new lines and remove empty lines;
         if (query.length === 0) continue; // skip empty queries
-        
-        // check if the query is valid
-        if (query.length != 5) {
+
+        // simplifying the query by parsing it from convertDOMToObjects method
+        const queryObjects = convertDOMToObjects(queries[i], true);
+        if (typeof queryObjects === 'string') {
             errors.push(`Invalid query: ${queries[i]}`);
             continue;
         }
 
-        // simplifying the query by parsing it from convertDOMToObjects method
-        const queryObjects = convertDOMToObjects(queries[i]);
         const attributes = queryObjects[0].attributes;
         const tag = queryObjects[0].tag;
 
