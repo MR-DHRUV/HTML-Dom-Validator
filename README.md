@@ -4,6 +4,11 @@
 
 HTML DOM Validator ensures the structural integrity of HTML documents by validating them against specified rules. Using the **HTML Validation Language**, users can define custom rules to match their requirements. 
 
+### Contents
+- [HtML Validation Language](#html-validation-language)
+- [Example Usage](#example-usage)
+- [Local Setup and Development](#local-setup-and-development)
+
 ## **HTML Validation Language**
 The HTML Validation Language (HVL) allows you to define rules for validating the DOM structure of HTML documents. It provides a simple syntax to specify elements, attributes, and validation conditions. Below are the rules and syntax for using HVL.
 
