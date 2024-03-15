@@ -5,9 +5,132 @@
 HTML DOM Validator ensures the structural integrity of HTML documents by validating them against specified rules. Using the **HTML Validation Language**, users can define custom rules to match their requirements. 
 
 ### Contents
+- [Approach](#Approach)
 - [HtML Validation Language](#html-validation-language)
 - [Example Usage](#example-usage)
 - [Local Setup and Development](#local-setup-and-development)
+
+## Approach
+After understanding and breaking down the problem statement, I thought that if I can define a set of rules and then use these rules to validate the DOM structure of HTML documents, it would be a generalized solution. This would allow users to define custom rules to match their requirements and this is how I came up with the HTML Validation Language (HVL) and the validation algorithm. This validation process is divided into 2 steps:
+
+### 1. Parsing
+The HTML document is parsed into a tree structure that is easy to traverse and validate. This parsing is done in two steps and to understand the process, let's consider the following HTML code.
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="main">
+        <div id="body">
+            <p id="mainpara" class="para para1"></p>
+            <p class="para">a</p>
+            <p class="para">a</p>
+            <p class="para"> </p>
+        </div>
+    </div>
+    <select name="" id="">
+        <option value="">Option 1</option>
+        <option value="">Option 2</option>
+    </select>
+</body>
+
+</html>
+```
+
+#### Step 1: flattening
+The HTML code is first flattened to remove all the unnecessary information and every useful information is stored in the form of attributes. Indentation is used to denote nesting levels and the text of the element is stored in the `text` attribute. For simplicity, lets call this flattened form as HTML validation language (HVL). This translation is done using the `Parser.js` file which is located in `src\Core\Helpers\`.
+
+The HVL for the above HTML code is as follows:
+```css
+html(lang="en" text="")
+    head( text="")
+        meta(charset="UTF-8" text="")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0" text="")
+        title( text="Document")
+    body( text="")
+        div(id="main" text="")
+            div(id="body" text="")
+                p(id="mainpara" class="para para1" text="")
+                p(class="para" text="a")
+                p(class="para" text="a")
+                p(class="para" text="")
+        select(name="" id="" text="")
+            option(value="" text="Option 1")
+            option(value="" text="Option 2")
+```
+
+#### Step 2: Parsing to tree
+Now, this reduced structure is converted into a tree to efficiently represent children. An array data structure is used to store this tree where every element is an object with 3 keys
+
+- `tag` : The tag name of the element
+- `attributes` : The attributes of the element
+- `children` : The array indices of all the children of the element.
+
+This reduction to tree is done using the `General.js` file which is located in `src\Core\Helpers`.
+
+Translation of the above HVL to tree structure is as follows:
+```json
+[
+    ...
+    {
+        "tag": "div",
+        "attributes": {
+            "id": "body",
+            "text": ""
+        },
+        "children": [
+            8,
+            9,
+            10,
+            11
+        ]
+    },
+    {
+        "tag": "p",
+        "attributes": {
+            "id": "mainpara",
+            "class": [
+                "para",
+                "para1"
+            ],
+            "text": ""
+        },
+        "children": []
+    },
+    {
+        "tag": "p",
+        "attributes": {
+            "class": [
+                "para"
+            ],
+            "text": "a"
+        },
+        "children": []
+    },
+  ...
+]
+```
+
+Now, intuitively, we can represent the rules in the `flattened form / HVL` and then use the tree to validate the rules.
+
+### 2. Validation
+The tree structure is used to validate the rules defined using the HTML Validation Language. The rules are defined in a simple syntax and are used to match the structure of the HTML document. Any number of rules can be defined that can either correspond to the entire document or a specific part of the document.
+
+#### Rule Matching
+- For every rule, the first matching tag is found by traversing the elements array and then a recursive function is called to validate other HVL specific attributes and children. It is important to note that a pair of tag is said to be matching if the tag name and all the html attributes are same.
+
+- The recursive function is called for every child of the rule and the rule is said to be valid if all the children are valid. 
+
+- For any mismatch, detailed error messages are generated.
+
+- The complete matching algorithm is implemented in the `Validator.js` file which is located in `src\Core\`.
+
 
 ## **HTML Validation Language**
 The HTML Validation Language (HVL) allows you to define rules for validating the DOM structure of HTML documents. It provides a simple syntax to specify elements, attributes, and validation conditions. Below are the rules and syntax for using HVL.

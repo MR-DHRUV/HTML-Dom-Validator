@@ -6,6 +6,9 @@ import "./readme.css"
 const Readme = () => {
   return (
       <div className="crossnote markdown-preview  ">
+          <p>
+            Below is the syntax to define rules for the HTML DOM Validator, which will used to validate the structure of HTML document.
+          </p>
           <h4 id="1-element-declaration">1. Element Declaration </h4>
           <p>
               Specify the element name followed by its attributes in parentheses. If an
