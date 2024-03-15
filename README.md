@@ -1,4 +1,7 @@
 # **HTML DOM Validator**
+
+![image](https://github.com/MR-DHRUV/HTML-Dom-Validator/assets/96336775/d9c103fe-c427-411b-bace-a232cc500e07)
+
 HTML DOM Validator ensures the structural integrity of HTML documents by validating them against specified rules. Using the **HTML Validation Language**, users can define custom rules to match their requirements. 
 
 ## **HTML Validation Language**
