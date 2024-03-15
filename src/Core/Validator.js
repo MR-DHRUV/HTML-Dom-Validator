@@ -4,8 +4,14 @@
 import { validateAttributes } from "./Helpers/Attributes";
 import { convertDOMToObjects } from "./Helpers/General";
 import { parseDomStructure } from "./Helpers/Parser";
+import isHtml from 'is-html';
 
 export default function resolveQueries(htmlString, queries) {
+
+    // check if the html is valid
+    if (!isHtml(htmlString)) {
+        return ['Invalid HTML'];
+    }
 
     // parse the dom
     const dom = parseDomStructure(htmlString);

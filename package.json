@@ -16,6 +16,7 @@
         "bootstrap": "^5.3.3",
         "child_process": "^1.0.2",
         "fs": "^0.0.1-security",
+        "is-html": "^3.1.0",
         "jsdom": "^24.0.0",
         "net": "^1.0.2",
         "next": "14.1.3",
