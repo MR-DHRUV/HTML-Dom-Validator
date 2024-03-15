@@ -190,6 +190,6 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 <br>
 <br>
 
-**We love contributions** <br>Contribute to this project by adding new features, fixing bugs, or improving the documentation. You can also help by reviewing and commenting on existing pull requests.
+<!-- **We love contributions** <br>Contribute to this project by adding new features, fixing bugs, or improving the documentation. You can also help by reviewing and commenting on existing pull requests. -->
 
 #### Made with ❤️ by [Dhruv Gupta](https://mrdhruv.co)
