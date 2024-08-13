@@ -11,7 +11,7 @@ HTML DOM Validator ensures the structural integrity of HTML documents by validat
 - [Local Setup and Development](#local-setup-and-development)
 
 ## Approach
-After understanding and breaking down the problem statement, I thought that if I can define a set of rules and then use these rules to validate the DOM structure of HTML documents, it would be a generalized solution. This would allow users to define custom rules to match their requirements and this is how I came up with the HTML Validation Language (HVL) and the validation algorithm. This validation process is divided into 2 steps:
+To create a generalized solution to match specific parts of an HTML DOM, I thought that if I could define a set of rules and then use these rules to validate the DOM structure of HTML documents, it would be a great solution. This would allow users to define custom rules to match their requirements and this is how I came up with the HTML Validation Language (HVL) and the validation algorithm. This validation process is divided into 2 steps:
 
 ### 1. Parsing
 The HTML document is parsed into a tree structure that is easy to traverse and validate. This parsing is done in two steps and to understand the process, let's consider the following HTML code.
