@@ -2,7 +2,7 @@
 
 ![image](https://github.com/MR-DHRUV/HTML-Dom-Validator/assets/96336775/d9c103fe-c427-411b-bace-a232cc500e07)
 
-HTML DOM Validator ensures the structural integrity of HTML documents by validating them against specified rules. Using the **HTML Validation Language**, users can define custom rules to match their requirements. 
+HTML DOM Validator can be used to verify the structural integrity of HTML documents by validating them against specified rules. Using the HTML Validation Language, users can define custom rules to match their requirements. The project provides a playground where users can input HTML code and define rules to validate the structure of the DOM. The validation algorithm parses the HTML document into a tree structure and matches it against the specified rules to identify any discrepancies. Detailed error messages are generated in case of mismatches, helping users identify and rectify issues in the HTML document.
 
 ### Contents
 - [Approach](#Approach)
